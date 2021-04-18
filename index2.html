@@ -1,0 +1,134 @@
+
+<!-- saved from url=(0039)file:///C:/D/tmp/htmlCmdPad/index2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" href="./index2_files/style.css">
+      <style>
+         pre {
+            overflow-x: auto;
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word;
+         }
+      </style>
+</head>
+<body>
+<script>
+window.onload = function() {
+(function()
+{
+  let buttons = document.getElementsByTagName('Button');
+  for(let i = 0; i < buttons.length; i++)
+  {	  
+    let button = buttons[i];
+    button.addEventListener('click', e =>
+    {
+      let button = e.target;
+      let cmdtxt = button.parentNode.parentNode.getElementsByClassName('cmdtxt')[0].innerHTML;
+      cmdtxt = cmdtxt.replace('<br>', '');
+      let text = document.createElement('input');
+      text.setAttribute('type', 'text');
+      text.value = cmdtxt;
+      document.body.appendChild(text);
+      text.select();
+      document.execCommand('copy');
+      document.body.removeChild(text);
+    });
+  }
+})();
+};
+
+function addRow() {
+	var table = document.getElementsByClassName("blueTable")[0];
+
+	var rowCount = table.rows.length;
+	var row = table.insertRow();
+
+	var cell1 = row.insertCell(0);
+	var element1 = document.createElement("pre");
+	element1.className = "cmdtxt";
+	element1.innerHTML = rowCount +1;
+	cell1.appendChild(element1);
+
+	var cell2 = row.insertCell(1);
+	var element2 = document.createElement("button");
+	element2.innerHTML = "Copy";
+	element2.contentEditable = false;
+	cell2.appendChild(element2);
+
+	var cell3 = row.insertCell(2);
+	cell3.innerHTML = rowCount + 1;
+
+	var cell4 = row.insertCell(3);
+	cell4.innerHTML = rowCount + 1;
+
+};
+
+</script>
+<input type="button" value="Add Row" onclick="addRow()">
+<br>
+<br>
+<table class="blueTable" contenteditable="true">
+<thead>
+<tr>
+<th class="command">Command</th>
+<th>Copy</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><pre class="cmdtxt">#find / -name "*.css" -exec ls -l {} \; 2&gt;/dev/null</pre></td>
+<td><button contenteditable="false">Copy</button></td>
+<td>Finds all occurrences of any CSS files on the system and lists the location details and permissions for each of them</td>
+<td>1</td>
+</tr>
+<tr>
+<td><pre class="cmdtxt">#pgdump -C --inserts cmdb &gt;./cmddb.sql</pre></td>
+<td><button contenteditable="false">Copy</button></td>
+<td>Exports the database into inserts format</td>
+<td>2</td>
+</tr>
+<tr>
+<td><pre class="cmdtxt">#mtr 8.8.8.8</pre></td>
+<td><button contenteditable="false">Copy</button></td>
+<td>Runs an ICMP trace producing output similar to ping.</td>
+<td>3</td>
+</tr>
+<tr>
+<td><pre class="cmdtxt">#cat test.json | python -m json.tool</pre></td>
+<td><button contenteditable="false">Copy</button></td>
+<td>uses python to pretty print json</td>
+<td>4</td>
+</tr>
+<tr><td><pre class="cmdtxt">#netstat -naptu |grep -i listen</pre></td><td><button contenteditable="false">Copy</button></td><td>Finds all listening ports on the system</td><td>6</td></tr>
+<tr><td><pre class="cmdtxt">#docker container ls -a</pre></td><td><button contenteditable="false">Copy</button></td><td>lists all docker containers either running or not<br></td><td>7</td></tr>
+<tr><td><pre class="cmdtxt">#curl -kw "local_ip: %{local_ip} \nsize_header: %{size_header} \ntime_namelookup: %{time_namelookup} \ntime_connect: %{time_connect} \ntime_starttranntime_starttransfer: %{ime_starttransfer} \ntime_total: %{time_total} \nsize_request: %{size_request} \nspeed_download: %{speed_download} \nsize_download: %{size_download}\n " "https://www.yahoo.com"|tail -9</pre></td><td><button contenteditable="false">Copy</button></td><td>print transfer information using curl</td><td><pre>sherif@Luthien:~$ curl -kw "local_ip: %{local_ip} \nsize_header: %{size_header} \ntime_namelookup: %{time_namelookup} \ntime_connect: %{time_connect} \ntime_starttranntime_starttransfer: %{ime_starttransfer} \ntime_total: %{time_total} \nsize_request: %{size_request} \nspeed_download: %{speed_download} \nsize_download: %{size_download}\n " "https://www.yahoo.com"|tail -9
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100  500k    0  500k    0     0   594k      0 --:--:-- --:--:-- --:--:--  593k
+size_header: 1203 
+time_namelookup: 0,032026 
+time_connect: 0,064607 
+time_starttranntime_starttransfer: 0,241635 
+time_total: 0,843143 
+size_request: 75 
+speed_download: 608442,000 
+size_download: 512917
+sherif@Luthien:~$</pre></td></tr>
+<tr><td><pre class="cmdtxt">#ls -ltrR</pre></td><td><button contenteditable="false">Copy</button></td><td>Print directory contents recursively</td><td>9</td></tr><tr><td><pre class="cmdtxt">#ls -l /proc/1234/fd/*|wc -l</pre></td><td><button contenteditable="false">Copy</button></td><td>count number of file descriptors for process 1234</td><td>10</td></tr><tr><td><pre class="cmdtxt">SELECT	SUM(city.population) OVER (PARTITION BY countryid) 
+			AS total_country_popoulation,
+		countryid,
+		name
+FROM city
+order by countryid</pre></td><td><button contenteditable="false">Copy</button></td><td>Dummy example for window functions in SQL</td><td>11</td></tr></tbody>
+</table>
+
+
+
+
+
+</body></html>
